@@ -1,0 +1,38 @@
+{
+  "name": "react-hook-dimensions",
+  "version": "1.0.0",
+  "description": "Get full control over your dimensions",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts",
+    "build": "pretty-quick --staged && npm run lint && tsc",
+    "prepublish": "npm run build"
+  },
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZakh-packages/react-hook-dimensions.git"
+  },
+  "author": "DZakh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DZakh-packages/react-hook-dimensions/issues"
+  },
+  "homepage": "https://github.com/DZakh-packages/react-hook-dimensions#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^16.9.43",
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.9.7"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+}
