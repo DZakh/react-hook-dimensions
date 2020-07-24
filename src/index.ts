@@ -42,8 +42,8 @@ export function useDimensions(): UseDimensionsReturn {
 
     const rect = element.getBoundingClientRect();
     setDimensions({
-      x: rect.left,
-      y: rect.top,
+      x: rect.x ?? rect.left,
+      y: rect.y ?? rect.top,
       left: rect.left,
       top: rect.top,
       right: rect.right,
