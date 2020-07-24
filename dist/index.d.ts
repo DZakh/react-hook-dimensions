@@ -12,9 +12,5 @@ export declare type Dimensions = {
 export declare type DimensionsNode = HTMLElement | null;
 export declare type DimensionsRef = React.RefObject<HTMLElement>;
 export declare type UpdateDimensions = () => void;
-export declare type UseDimensionsReturn = {
-  ref: DimensionsRef;
-  dimensions: Dimensions;
-  updateDimensions: UpdateDimensions;
-};
+export declare type UseDimensionsReturn = [DimensionsRef, Dimensions, UpdateDimensions];
 export declare function useDimensions(): UseDimensionsReturn;

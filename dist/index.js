@@ -2,10 +2,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 exports.useDimensions = void 0;
 var react_1 = require('react');
-// Export hook
 function useDimensions() {
   var ref = react_1.useRef(null);
-  // Keep track of measurements
   var _a = react_1.useState({
       x: 0,
       y: 0,
@@ -18,17 +16,17 @@ function useDimensions() {
     }),
     dimensions = _a[0],
     setDimensions = _a[1];
-  // Define measure function
   var updateDimensions = react_1.useCallback(
     function () {
+      var _a, _b;
       var element = ref.current;
       if (!element) {
         return;
       }
       var rect = element.getBoundingClientRect();
       setDimensions({
-        x: rect.left,
-        y: rect.top,
+        x: (_a = rect.x) !== null && _a !== void 0 ? _a : rect.left,
+        y: (_b = rect.y) !== null && _b !== void 0 ? _b : rect.top,
         left: rect.left,
         top: rect.top,
         right: rect.right,
@@ -39,11 +37,7 @@ function useDimensions() {
     },
     [ref.current]
   );
-  return {
-    ref: ref,
-    dimensions: dimensions,
-    updateDimensions: updateDimensions,
-  };
+  return [ref, dimensions, updateDimensions];
 }
 exports.useDimensions = useDimensions;
 //# sourceMappingURL=index.js.map
