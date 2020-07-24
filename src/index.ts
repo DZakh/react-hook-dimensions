@@ -13,11 +13,8 @@ export type Dimensions = {
 export type DimensionsNode = HTMLElement | null;
 export type DimensionsRef = React.RefObject<HTMLElement>;
 export type UpdateDimensions = () => void;
-export type UseDimensionsReturn = {
-  ref: DimensionsRef;
-  dimensions: Dimensions;
-  updateDimensions: UpdateDimensions;
-};
+
+export type UseDimensionsReturn = [DimensionsRef, Dimensions, UpdateDimensions];
 
 export function useDimensions(): UseDimensionsReturn {
   const ref = useRef<HTMLElement>(null);
@@ -53,9 +50,5 @@ export function useDimensions(): UseDimensionsReturn {
     });
   }, [ref.current]);
 
-  return {
-    ref,
-    dimensions,
-    updateDimensions,
-  };
+  return [ref, dimensions, updateDimensions];
 }
