@@ -18,6 +18,7 @@ export type UseDimensionsReturn = [DimensionsRef, Dimensions, UpdateDimensions];
 
 export function useDimensions(): UseDimensionsReturn {
   const ref = useRef<HTMLElement>(null);
+  const element = ref.current;
 
   const [dimensions, setDimensions] = useState<Dimensions>({
     x: 0,
@@ -31,8 +32,6 @@ export function useDimensions(): UseDimensionsReturn {
   });
 
   const updateDimensions = useCallback(() => {
-    const element = ref.current;
-
     if (!element) {
       return;
     }
@@ -48,7 +47,7 @@ export function useDimensions(): UseDimensionsReturn {
       width: rect.width,
       height: rect.height,
     });
-  }, [ref.current]);
+  }, [element]);
 
   return [ref, dimensions, updateDimensions];
 }
