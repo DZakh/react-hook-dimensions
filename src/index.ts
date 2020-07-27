@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 
 export type Dimensions = {
   x: number;
@@ -15,8 +15,14 @@ export type DimensionsRef = React.RefObject<HTMLElement>;
 export type UpdateDimensions = () => void;
 
 export type UseDimensionsReturn = [DimensionsRef, Dimensions, UpdateDimensions];
+export type UseDimensionsOptions =
+  | {
+      dependencies?: any[];
+      defaults?: Partial<Dimensions>;
+    }
+  | undefined;
 
-export function useDimensions(): UseDimensionsReturn {
+export function useDimensions({ dependencies, defaults }: UseDimensionsOptions = {}): UseDimensionsReturn {
   const ref = useRef<HTMLElement>(null);
   const element = ref.current;
 
@@ -29,6 +35,7 @@ export function useDimensions(): UseDimensionsReturn {
     bottom: 0,
     width: 0,
     height: 0,
+    ...defaults,
   });
 
   const updateDimensions = useCallback(() => {
@@ -48,6 +55,14 @@ export function useDimensions(): UseDimensionsReturn {
       height: rect.height,
     });
   }, [element]);
+
+  useEffect(() => {
+    if (typeof dependencies === 'undefined') {
+      return;
+    }
+
+    updateDimensions();
+  }, dependencies);
 
   return [ref, dimensions, updateDimensions];
 }

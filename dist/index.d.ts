@@ -13,4 +13,8 @@ export declare type DimensionsNode = HTMLElement | null;
 export declare type DimensionsRef = React.RefObject<HTMLElement>;
 export declare type UpdateDimensions = () => void;
 export declare type UseDimensionsReturn = [DimensionsRef, Dimensions, UpdateDimensions];
-export declare function useDimensions(): UseDimensionsReturn;
+export declare type UseDimensionsOptions = {
+    dependencies?: any[];
+    defaults?: Partial<Dimensions>;
+} | undefined;
+export declare function useDimensions({ dependencies, defaults }?: UseDimensionsOptions): UseDimensionsReturn;
