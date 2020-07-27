@@ -24,7 +24,6 @@ export type UseDimensionsOptions =
 
 export function useDimensions({ dependencies, defaults }: UseDimensionsOptions = {}): UseDimensionsReturn {
   const ref = useRef<HTMLElement>(null);
-  const element = ref.current;
 
   const [dimensions, setDimensions] = useState<Dimensions>({
     x: 0,
@@ -39,6 +38,8 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
   });
 
   const updateDimensions = useCallback(() => {
+    const element = ref.current;
+
     if (!element) {
       return;
     }
@@ -54,7 +55,7 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
       width: rect.width,
       height: rect.height,
     });
-  }, [element]);
+  }, [ref.current]);
 
   useEffect(() => {
     if (typeof dependencies === 'undefined') {
