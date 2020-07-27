@@ -20,6 +20,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDimensions = void 0;
 var react_1 = require("react");
+var helpers_1 = require("./helpers");
 function useDimensions(_a) {
     var _b = _a === void 0 ? {} : _a, dependencies = _b.dependencies, defaults = _b.defaults;
     var ref = react_1.useRef(null);
@@ -40,16 +41,12 @@ function useDimensions(_a) {
             bottom: rect.bottom,
             width: rect.width,
             height: rect.height,
-            scrollX: window.pageXOffset !== undefined
-                ? window.pageXOffset
-                : (document.documentElement || document.body.parentNode || document.body).scrollLeft,
-            scrollY: window.pageYOffset !== undefined
-                ? window.pageYOffset
-                : (document.documentElement || document.body.parentNode || document.body).scrollTop,
+            scrollX: helpers_1.getScrollX(),
+            scrollY: helpers_1.getScrollY(),
         });
     }, [ref.current]);
     react_1.useEffect(function () {
-        if (typeof dependencies === 'undefined') {
+        if (helpers_1.isUndefined(dependencies)) {
             return;
         }
         updateDimensions();

@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { isUndefined, getScrollX, getScrollY } from './helpers';
 
 export type Dimensions = {
   x: number;
@@ -58,19 +59,13 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
       bottom: rect.bottom,
       width: rect.width,
       height: rect.height,
-      scrollX:
-        window.pageXOffset !== undefined
-          ? window.pageXOffset
-          : (document.documentElement || document.body.parentNode || document.body).scrollLeft,
-      scrollY:
-        window.pageYOffset !== undefined
-          ? window.pageYOffset
-          : (document.documentElement || document.body.parentNode || document.body).scrollTop,
+      scrollX: getScrollX(),
+      scrollY: getScrollY(),
     });
   }, [ref.current]);
 
   useEffect(() => {
-    if (typeof dependencies === 'undefined') {
+    if (isUndefined(dependencies)) {
       return;
     }
 
