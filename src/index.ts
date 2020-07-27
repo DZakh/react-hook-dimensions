@@ -62,7 +62,7 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
     }
 
     updateDimensions();
-  }, dependencies);
+  }, [updateDimensions, ...(dependencies || [])]);
 
   return [ref, dimensions, updateDimensions];
 }
