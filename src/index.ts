@@ -9,6 +9,8 @@ export type Dimensions = {
   bottom: number;
   width: number;
   height: number;
+  scrollX: number;
+  scrollY: number;
 };
 export type DimensionsNode = HTMLElement | null;
 export type DimensionsRef = React.RefObject<HTMLElement>;
@@ -34,6 +36,8 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
     bottom: 0,
     width: 0,
     height: 0,
+    scrollX: 0,
+    scrollY: 0,
     ...defaults,
   });
 
@@ -54,6 +58,14 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
       bottom: rect.bottom,
       width: rect.width,
       height: rect.height,
+      scrollX:
+        window.pageXOffset !== undefined
+          ? window.pageXOffset
+          : (document.documentElement || document.body.parentNode || document.body).scrollLeft,
+      scrollY:
+        window.pageYOffset !== undefined
+          ? window.pageYOffset
+          : (document.documentElement || document.body.parentNode || document.body).scrollTop,
     });
   }, [ref.current]);
 

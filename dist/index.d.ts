@@ -8,6 +8,8 @@ export declare type Dimensions = {
     bottom: number;
     width: number;
     height: number;
+    scrollX: number;
+    scrollY: number;
 };
 export declare type DimensionsNode = HTMLElement | null;
 export declare type DimensionsRef = React.RefObject<HTMLElement>;
