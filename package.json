@@ -1,19 +1,38 @@
 {
   "name": "react-hook-dimensions",
-  "version": "1.0.0",
-  "description": "Get full control over your dimensions",
+  "version": "1.1.0",
+  "description": "React Hook to get DOM Element `BoundingClientRect` together with the `page offset` snapshot, that covers all your needs. What makes the package different - You can trigger an update when you really need it.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "lint": "eslint . --ext .js,.ts",
     "build": "pretty-quick --staged && npm run lint && tsc",
     "prepublish": "npm run build"
   },
-  "types": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "hook",
+    "react-hook",
+    "use-dimensions",
+    "client-rect",
+    "scroll",
+    "dimensions",
+    "measure",
+    "size",
+    "responsive-components",
+    "control",
+    "multiple",
+    "performance",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DZakh-packages/react-hook-dimensions.git"
   },
-  "author": "DZakh",
+  "author": "DZakh <dzakh.dev@gmail.com> (https://github.com/DZakh)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DZakh-packages/react-hook-dimensions/issues"
