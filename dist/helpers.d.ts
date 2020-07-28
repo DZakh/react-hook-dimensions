@@ -1,3 +1,3 @@
 export declare function isUndefined(value: any): boolean;
-export declare const getScrollX: () => number;
-export declare const getScrollY: () => number;
+export declare function getScrollX(): number;
+export declare function getScrollY(): number;

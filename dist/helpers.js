@@ -6,7 +6,14 @@ function isUndefined(value) {
     return typeof value === 'undefined';
 }
 exports.isUndefined = isUndefined;
-var body = document.documentElement || document.body.parentNode || document.body;
-exports.getScrollX = isUndefined(window.pageXOffset) ? function () { return body.scrollLeft; } : function () { return window.pageXOffset; };
-exports.getScrollY = isUndefined(window.pageYOffset) ? function () { return body.scrollTop; } : function () { return window.pageYOffset; };
+function getScrollX() {
+    var body = document.documentElement || document.body.parentNode || document.body;
+    return isUndefined(window.pageXOffset) ? body.scrollLeft : window.pageXOffset;
+}
+exports.getScrollX = getScrollX;
+function getScrollY() {
+    var body = document.documentElement || document.body.parentNode || document.body;
+    return isUndefined(window.pageYOffset) ? body.scrollTop : window.pageYOffset;
+}
+exports.getScrollY = getScrollY;
 //# sourceMappingURL=helpers.js.map
