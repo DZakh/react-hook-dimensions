@@ -1,6 +1,6 @@
 {
   "name": "react-hook-dimensions",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "React Hook to get DOM Element `BoundingClientRect` together with the `page offset` snapshot, that covers all your needs. What makes the package different - You can trigger an update when you really need it.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

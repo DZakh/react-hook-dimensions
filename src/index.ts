@@ -12,6 +12,8 @@ export type Dimensions = {
   height: number;
   scrollX: number;
   scrollY: number;
+  positionTop: number;
+  positionLeft: number;
 };
 export type DimensionsNode = HTMLElement | null;
 export type DimensionsRef = React.RefObject<HTMLElement>;
@@ -39,6 +41,8 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
     height: 0,
     scrollX: 0,
     scrollY: 0,
+    positionTop: 0,
+    positionLeft: 0,
     ...defaults,
   });
 
@@ -50,6 +54,10 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
     }
 
     const rect = element.getBoundingClientRect();
+
+    const scrollX = getScrollX();
+    const scrollY = getScrollY();
+
     setDimensions({
       x: rect.x ?? rect.left,
       y: rect.y ?? rect.top,
@@ -59,8 +67,10 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
       bottom: rect.bottom,
       width: rect.width,
       height: rect.height,
-      scrollX: getScrollX(),
-      scrollY: getScrollY(),
+      scrollX,
+      scrollY,
+      positionTop: rect.top + scrollY,
+      positionLeft: rect.left + scrollX,
     });
   }, [ref.current]);
 

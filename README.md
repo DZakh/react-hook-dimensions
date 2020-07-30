@@ -2,7 +2,7 @@
 
 Get full control over your dimensions!
 
-React Hook to get DOM Element `BoundingClientRect` together with the `page offset` snapshot, that covers all your needs.
+React Hook to get DOM Element `BoundingClientRect` together with the `page offset` snapshot and `position relative to body`, that covers all your needs.
 
 What makes the package different - **You can trigger an update when you really need it.**
 
@@ -50,7 +50,8 @@ const [elementRef, elementDimensions, updateElementDimensions] = useDimensions({
 
 - If `dependencies` option isn't set, then `dimensions` value will be zero till the `update` function call.
 - You can set `defaults` option, that will override initial `dimension` value. It may be usefull for _SSR_.
-- The `dimensions` object has `scrollX` and `scrollY` values that computed on `update`, together with `BoundingClientRect`. Due to this you can cumpute element's position on the page (not only screen).
+- The `dimensions` object has `scrollX` and `scrollY` values that computed on `update`, together with `BoundingClientRect`.
+- The `dimensions` object has `positionLeft` and `positionTop` values relative to page.
 - **100% TypeScript**.
 
 ## Use cases
