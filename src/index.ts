@@ -72,7 +72,7 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
       positionTop: rect.top + scrollY,
       positionLeft: rect.left + scrollX,
     });
-  }, [ref.current]);
+  }, []);
 
   useEffect(() => {
     if (isUndefined(dependencies)) {
@@ -80,7 +80,7 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
     }
 
     updateDimensions();
-  }, [updateDimensions, ...(dependencies || [])]);
+  }, dependencies || []);
 
   return [ref, dimensions, updateDimensions];
 }
