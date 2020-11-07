@@ -53,7 +53,3 @@ const [elementRef, elementDimensions, updateElementDimensions] = useDimensions({
 - The `dimensions` object has `scrollX` and `scrollY` values that computed on `update`, together with `BoundingClientRect`.
 - The `dimensions` object has `positionLeft` and `positionTop` values relative to page.
 - **100% TypeScript**.
-
-## Use cases
-
-_In progress_
