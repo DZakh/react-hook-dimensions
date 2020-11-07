@@ -20,5 +20,6 @@ export declare type UseDimensionsReturn = [DimensionsRef, Dimensions, UpdateDime
 export declare type UseDimensionsOptions = {
     dependencies?: any[];
     defaults?: Partial<Dimensions>;
+    layoutEffect?: boolean;
 } | undefined;
-export declare function useDimensions({ dependencies, defaults }?: UseDimensionsOptions): UseDimensionsReturn;
+export declare function useDimensions({ dependencies, defaults, layoutEffect, }?: UseDimensionsOptions): UseDimensionsReturn;

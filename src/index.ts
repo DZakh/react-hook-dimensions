@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { isUndefined, getScrollX, getScrollY } from './helpers';
+import { isUndefined, getScrollX, getScrollY, useIsomorphicLayoutEffect } from './helpers';
 
 export type Dimensions = {
   x: number;
@@ -24,10 +24,15 @@ export type UseDimensionsOptions =
   | {
       dependencies?: any[];
       defaults?: Partial<Dimensions>;
+      layoutEffect?: boolean;
     }
   | undefined;
 
-export function useDimensions({ dependencies, defaults }: UseDimensionsOptions = {}): UseDimensionsReturn {
+export function useDimensions({
+  dependencies,
+  defaults = {},
+  layoutEffect = false,
+}: UseDimensionsOptions = {}): UseDimensionsReturn {
   const ref = useRef<HTMLElement>(null);
 
   const [dimensions, setDimensions] = useState<Dimensions>({
@@ -74,7 +79,8 @@ export function useDimensions({ dependencies, defaults }: UseDimensionsOptions =
     });
   }, []);
 
-  useEffect(() => {
+  const useCustomEffect = layoutEffect ? useIsomorphicLayoutEffect : useEffect;
+  useCustomEffect(() => {
     if (isUndefined(dependencies)) {
       return;
     }

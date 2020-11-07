@@ -37,14 +37,16 @@ const [elementRef, elementDimensions, updateElementDimensions] = useDimensions({
     heigth: 300,
     scrollY: 123,
   },
+  layoutEffect: true,
 });
 ```
 
-1. Pass `ref` that's called `elementRef` here to an element you want to measure.
-2. Then take `dimensions data` from the second param. Although initially, all values are going to be zeros.
+1. Pass `ref` called `elementRef` here to an element you want to measure.
+2. Then take `dimensions data` from the second param. Although initially, all values are going to be zeros or set to default.
 3. There are two ways to update dimensions:
-   3.1. Use `dependencies` options. When one of the dependencies changes, the hook updates dimensions. You can set it to an empty array if you want to have **computed value from start**.
+   3.1. Use `dependencies` options. When one of the dependencies changes, the hook updates dimensions. You can set it to an empty array if you want to have a **computed value from the start**.
    3.2. Call the `updateElementDimensions` function, that's the third param.
+4. If you use `dependencies` you can set `layoutEffect` to `true` if you want to update dimenstions on `useLayoutEffect`.
 
 ## Details
 

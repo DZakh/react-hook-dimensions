@@ -15,9 +15,9 @@ exports.useDimensions = void 0;
 var react_1 = require("react");
 var helpers_1 = require("./helpers");
 function useDimensions(_a) {
-    var _b = _a === void 0 ? {} : _a, dependencies = _b.dependencies, defaults = _b.defaults;
+    var _b = _a === void 0 ? {} : _a, dependencies = _b.dependencies, _c = _b.defaults, defaults = _c === void 0 ? {} : _c, _d = _b.layoutEffect, layoutEffect = _d === void 0 ? false : _d;
     var ref = react_1.useRef(null);
-    var _c = react_1.useState(__assign({ x: 0, y: 0, left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0, scrollX: 0, scrollY: 0, positionTop: 0, positionLeft: 0 }, defaults)), dimensions = _c[0], setDimensions = _c[1];
+    var _e = react_1.useState(__assign({ x: 0, y: 0, left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0, scrollX: 0, scrollY: 0, positionTop: 0, positionLeft: 0 }, defaults)), dimensions = _e[0], setDimensions = _e[1];
     var updateDimensions = react_1.useCallback(function () {
         var _a, _b;
         var element = ref.current;
@@ -42,7 +42,8 @@ function useDimensions(_a) {
             positionLeft: rect.left + scrollX,
         });
     }, []);
-    react_1.useEffect(function () {
+    var useCustomEffect = layoutEffect ? helpers_1.useIsomorphicLayoutEffect : react_1.useEffect;
+    useCustomEffect(function () {
         if (helpers_1.isUndefined(dependencies)) {
             return;
         }
