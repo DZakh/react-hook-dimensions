@@ -34,7 +34,7 @@ import { useDimensions } from 'react-hook-dimensions';
 const [elementRef, elementDimensions, updateElementDimensions] = useDimensions({
   dependencies: [],
   defaults: {
-    heigth: 300,
+    height: 300,
     scrollY: 123,
   },
   layoutEffect: true,
