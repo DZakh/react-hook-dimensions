@@ -36,7 +36,7 @@ export function useDimensions<TElement extends HTMLElement = HTMLElement>({
   dependencies,
   defaults = {},
   layoutEffect = false,
-}: UseDimensionsOptions = {}): UseDimensionsReturn {
+}: UseDimensionsOptions = {}): UseDimensionsReturn<TElement> {
   const ref = useRef<TElement>(null);
 
   const [dimensions, setDimensions] = useState<Dimensions>({
