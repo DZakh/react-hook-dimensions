@@ -15,8 +15,11 @@ export type Dimensions = {
   positionTop: number;
   positionLeft: number;
 };
+
 export type DimensionsNode<TElement extends HTMLElement = HTMLElement> = TElement | null;
-export type DimensionsRef<TElement extends HTMLElement = HTMLElement> = React.RefObject<TElement>;
+export type DimensionsRef<TElement extends HTMLElement = HTMLElement> = React.MutableRefObject<
+  DimensionsNode<TElement>
+>;
 export type UpdateDimensions = () => void;
 
 export type UseDimensionsReturn<TElement extends HTMLElement = HTMLElement> = [
@@ -36,8 +39,8 @@ export function useDimensions<TElement extends HTMLElement = HTMLElement>({
   dependencies,
   defaults = {},
   layoutEffect = false,
-}: UseDimensionsOptions = {}): UseDimensionsReturn {
-  const ref = useRef<TElement>(null);
+}: UseDimensionsOptions = {}): UseDimensionsReturn<TElement> {
+  const ref = useRef<DimensionsNode<TElement>>(null);
 
   const [dimensions, setDimensions] = useState<Dimensions>({
     x: 0,
